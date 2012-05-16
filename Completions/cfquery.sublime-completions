@@ -1,0 +1,20 @@
+{
+	"scope": "entity.tag.query.cfml",
+	
+	"completions":
+	[
+		{ "trigger": "cachedwithin", "contents": "cachedwithin=\"$1\"" },
+		{ "trigger": "datasource", "contents": "datasource=\"$1\"" },
+		{ "trigger": "dbtype", "contents": "dbtype=\"$1\"" }
+	]
+}
+
+{
+	"scope": "entity.tag.query.dbtype.cfml",
+	
+	"completions":
+	[
+		{ "trigger": "query", "contents": "cachedwithin=\"$1\"" },
+		{ "trigger": "database", "contents": "datasource=\"$1\"" }
+	]
+}

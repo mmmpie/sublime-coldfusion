@@ -1,0 +1,17 @@
+<snippet>
+	<tabTrigger>;cffnnn</tabTrigger>
+	<scope>source.cfml</scope>
+	<content><![CDATA[
+<!---
+# ${1:name}
+--->
+<cffunction name="$1"${2: hint="$3"}>
+	${4:<cfargument name="$5"${6: required="true"}${7: type="${8:string}"}${9: default="$10"}>
+	}${20:<cfargument name="$21"${22: required="true"}${23: type="${24:string}"}${25: default="$26"}>
+	}${30:<cfargument name="$31"${32: required="true"}${33: type="${34:string}"}${35: default="$36"}>
+	}<cfscript>
+		$0
+	</cfscript>
+</cffunction>
+]]></content>
+</snippet>

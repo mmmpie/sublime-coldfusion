@@ -1,0 +1,8 @@
+<snippet>
+	<tabTrigger>;cfd</tabTrigger>
+	<scope>source.cfml</scope>
+	<content><![CDATA[
+<cfdump var="#$1#"><cfabort>
+$0
+]]></content>
+</snippet>

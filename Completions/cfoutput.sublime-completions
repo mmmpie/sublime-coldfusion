@@ -1,0 +1,9 @@
+{
+	"scope": "entity.tag.cfml",
+	
+	"completions":
+	[
+		{ "trigger": "query", "contents": "query=\"$1\"" },
+		{ "trigger": "group", "contents": "group=\"$1\"" }
+	]
+}

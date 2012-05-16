@@ -1,0 +1,9 @@
+<snippet>
+	<tabTrigger>;cfq</tabTrigger>
+	<scope>source.cfml</scope>
+	<content><![CDATA[
+<cfquery name=""${1: result="$2"}${4: datasource="$6"}${4/(^$)|.*/(?1: dbtype="query")/}>
+	$0
+</cfquery>
+]]></content>
+</snippet>
