@@ -9,7 +9,7 @@
       "name": "entity.tag.script.cfml",
       "contentName": "meta.script",
       "begin": "(?i)<cfscript>",
-      "end": "(?i)</cfscript>",
+      "end": "(?i)\\s*</cfscript>",
       "patterns": [
         { "include": "#script" }
       ]
@@ -23,29 +23,28 @@
       ]
     },
     {
-      "name": "source.sql",
-      "begin": "(?i)(<cfquery)",
-      "end": "(?i)(</cfquery>)",
+      "begin": "(?i)\\s*(<cf(?=query(?!param)))",
+      "end": "(?i)\\s*(</cfquery>)",
       "beginCaptures": {
-        "1": { "name": "entity.tag.query.cfml" }
+        "1": { "name": "entity.tag.open.query.cfml" }
       },
       "endCaptures": {
-        "1": { "name": "entity.tag.query.cfml" }
+        "1": { "name": "entity.tag.close.query.cfml" }
       },
       "patterns": [
-        {"include": "#attributeandendoftag"},
-        {"include": "#cfsql"}
+       {"include": "#queryattributeandendoftag"},
+       {"include": "#cfsql"}
       ]
     },
     {
       "name": "source.sql",
       "begin": "(?i)(<cf_sql)",
-      "end": "(?i)(</cf_sql>)",
+      "end": "(?i)\\s*(</cf_sql>)",
       "beginCaptures": {
-        "1": { "name": "entity.tag.sql.cfml" }
+        "1": { "name": "entity.tag.open.sql.cfml" }
       },
       "endCaptures": {
-        "1": { "name": "entity.tag.sql.cfml" }
+        "1": { "name": "entity.tag.close.sql.cfml" }
       },
       "patterns": [
         {"include": "#attributeandendoftag"},
@@ -55,7 +54,7 @@
     {
       "name": "markup.text",
       "begin": "(?i)(<cfoutput>)",
-      "end": "(?i)(</cfoutput>)",
+      "end": "(?i)\\s*(</cfoutput>)",
       "beginCaptures": {
         "1": { "name": "entity.tag.output.cfml" }
       },
@@ -78,13 +77,13 @@
     },
     
     {
-      "name": "entity.tag.cfml",
-      "begin": "(?i)<cf",
+      "name": "entity.tag.open.cfml",
+      "begin": "(?i)\\s*<cf",
       "end": ">",
       "patterns": [{ "include": "#attribute" }]
     },
     {
-      "name": "entity.tag.cfml",
+      "name": "entity.tag.close.cfml",
       "begin": "(?i)</cf",
       "end": ">"
     }
@@ -145,6 +144,14 @@
     "script": {
       "name": "meta.script.line.cfml",
       "patterns": [{ "include": "#expression" }]
+    },
+    "queryattributeandendoftag": {
+      "name": "entity.tag.cfml",
+      "begin": "(query)(?=[^>]*>)",
+      "end": ">",
+      "patterns": [
+        { "include": "#attribute" }
+      ]
     },
     "attributeandendoftag": {
       "name": "entity.tag.cfml",

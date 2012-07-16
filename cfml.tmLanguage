@@ -22,7 +22,7 @@
 			<key>contentName</key>
 			<string>meta.script</string>
 			<key>end</key>
-			<string>(?i)&lt;/cfscript&gt;</string>
+			<string>(?i)\s*&lt;/cfscript&gt;</string>
 			<key>name</key>
 			<string>entity.tag.script.cfml</string>
 			<key>patterns</key>
@@ -50,32 +50,30 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?i)(&lt;cfquery)</string>
+			<string>(?i)\s*(&lt;cf(?=query(?!param)))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.tag.query.cfml</string>
+					<string>entity.tag.open.query.cfml</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?i)(&lt;/cfquery&gt;)</string>
+			<string>(?i)\s*(&lt;/cfquery&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.tag.query.cfml</string>
+					<string>entity.tag.close.query.cfml</string>
 				</dict>
 			</dict>
-			<key>name</key>
-			<string>source.sql</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#attributeandendoftag</string>
+					<string>#queryattributeandendoftag</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -91,17 +89,17 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.tag.sql.cfml</string>
+					<string>entity.tag.open.sql.cfml</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?i)(&lt;/cf_sql&gt;)</string>
+			<string>(?i)\s*(&lt;/cf_sql&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.tag.sql.cfml</string>
+					<string>entity.tag.close.sql.cfml</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -130,7 +128,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?i)(&lt;/cfoutput&gt;)</string>
+			<string>(?i)\s*(&lt;/cfoutput&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -170,11 +168,11 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?i)&lt;cf</string>
+			<string>(?i)\s*&lt;cf</string>
 			<key>end</key>
 			<string>&gt;</string>
 			<key>name</key>
-			<string>entity.tag.cfml</string>
+			<string>entity.tag.open.cfml</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -189,7 +187,7 @@
 			<key>end</key>
 			<string>&gt;</string>
 			<key>name</key>
-			<string>entity.tag.cfml</string>
+			<string>entity.tag.close.cfml</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -367,6 +365,22 @@
 			<string>#</string>
 			<key>name</key>
 			<string>string.quoted.interpolated.cfml</string>
+		</dict>
+		<key>queryattributeandendoftag</key>
+		<dict>
+			<key>begin</key>
+			<string>(query)(?=[^&gt;]*&gt;)</string>
+			<key>end</key>
+			<string>&gt;</string>
+			<key>name</key>
+			<string>entity.tag.cfml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#attribute</string>
+				</dict>
+			</array>
 		</dict>
 		<key>script</key>
 		<dict>
