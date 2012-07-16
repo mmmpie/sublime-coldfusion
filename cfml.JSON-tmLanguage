@@ -147,7 +147,7 @@
     },
     "queryattributeandendoftag": {
       "name": "entity.tag.cfml",
-      "begin": "(query)(?=[^>]*>)",
+      "begin": "(?i)(query)(?=[^>]*>)",
       "end": ">",
       "patterns": [
         { "include": "#attribute" }

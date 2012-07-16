@@ -369,7 +369,7 @@
 		<key>queryattributeandendoftag</key>
 		<dict>
 			<key>begin</key>
-			<string>(query)(?=[^&gt;]*&gt;)</string>
+			<string>(?i)(query)(?=[^&gt;]*&gt;)</string>
 			<key>end</key>
 			<string>&gt;</string>
 			<key>name</key>
